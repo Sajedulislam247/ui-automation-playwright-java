@@ -20,7 +20,9 @@ public abstract class BaseTest {
     @BeforeClass(alwaysRun = true)
     public void globalSetUp() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        // Headless by default (CI has no display). Run headed locally with: mvn test -Dheadless=false
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(headless));
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -42,7 +44,7 @@ public abstract class BaseTest {
 
     @AfterMethod
     public void captureFailure(ITestResult result) {
-        if (!result.isSuccess()) {
+        if (!result.isSuccess() && page != null && !page.isClosed()) {
             Allure.addAttachment("Screenshot on Failure",
                     new ByteArrayInputStream(
                             page.screenshot(
