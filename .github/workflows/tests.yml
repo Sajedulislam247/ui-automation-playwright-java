@@ -3,6 +3,8 @@ name: UI Tests
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '10 10 * * *'
   workflow_dispatch:
     inputs:
       suite:
@@ -14,7 +16,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
