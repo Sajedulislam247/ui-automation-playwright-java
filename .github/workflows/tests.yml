@@ -3,6 +3,8 @@ name: UI Tests
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '45 09 * * *'
   workflow_dispatch:
     inputs:
       suite:
