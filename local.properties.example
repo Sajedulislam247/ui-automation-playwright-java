@@ -1,0 +1,3 @@
+# Copy to local.properties (git-ignored) and fill in real values.
+userEmail=your-test-account@example.com
+userPassword=CHANGE_ME

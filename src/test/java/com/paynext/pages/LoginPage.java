@@ -38,7 +38,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage fillPassword(String password) {
-        step("Password used as: " + password, ()
+        step("Enter password (value masked)", ()
                 -> page.locator("[type=\"password\"]").fill(password));
         return this;
     }

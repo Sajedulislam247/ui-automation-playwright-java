@@ -30,6 +30,9 @@ jobs:
         run: mvn -B -q compile exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps chromium"
 
       - name: Run tests
+        env:
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         run: mvn -B test -DsuiteXmlFile=${{ inputs.suite || 'TestNG.xml' }}
 
       - name: Upload Allure results

@@ -8,7 +8,7 @@ public class SampleTest extends BaseTest {
 
     @Test
     public void pageTitleIsExpected() {
-        page.navigate("https://playwright.dev");
-        Assert.assertTrue(page.title().contains("Playwright"));
+        page().navigate("https://playwright.dev");
+        Assert.assertTrue(page().title().contains("Playwright"));
     }
 }

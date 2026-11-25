@@ -25,8 +25,8 @@ public class LoginTest extends BaseTest {
     @Story("Valid Login Flow")
     @Description("Ensures user can login using valid username and password")
     public void loginWithValidCredentialsShouldSucceed() {
-        loginWithCredentials(page, websiteUrl, userEmail, userPassword);
-        LoginPage loginPage = new LoginPage(page);
+        loginWithCredentials(page(), websiteUrl, userEmail, userPassword);
+        LoginPage loginPage = new LoginPage(page());
         assertThat(loginPage.getMyAccountNevLocator()).containsText("account");
         assertFalse(loginPage.getLoginButtonLocator().isVisible());
     }
