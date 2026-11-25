@@ -1,5 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Base Suite">
+<!-- parallel="methods": each @Test runs on its own thread with its own ThreadLocal browser.
+     Set thread-count to 1 to run sequentially. -->
+<suite name="Base Suite" parallel="methods" thread-count="3">
     <test name="Smoke">
         <packages>
             <package name="com.paynext.tests"/>
